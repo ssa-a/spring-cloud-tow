@@ -1,0 +1,28 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    name: cloud-provider-service  #微服务名称，该微服务入驻Eureka的时候在注册中心中的服务名就是这里的微服务名称（就是Eureka注册中心中的服务别名
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource      #当前数据源操作类型
+    driver-class-name: com.mysql.cj.jdbc.Driver        #mysql驱动包
+    url: jdbc:mysql://localhost:3306/db2023?useUnicode=true&characterEncoding-utr-8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka, http://eureka7002.com:7002/eureka
+  instance:
+    instance-id: payment8002 #添加此处
+    prefer-ip-address: true #添加此处
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml    #xml映射文件
+  type-aliases-package: com.swpu.springcloud.entities  #所有Entity别名类所在包
+  configuration:
+    map-underscore-to-camel-case: true

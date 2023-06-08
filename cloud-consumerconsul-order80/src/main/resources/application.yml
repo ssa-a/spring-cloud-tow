@@ -1,0 +1,13 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-order-service #微服务名称  也是Eureka注册中心中的服务别名
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+      #hostname: 127.0.0.1
+        service-name: ${spring.application.name}
